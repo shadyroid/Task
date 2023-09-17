@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Pet Finder</string>
+    <string name="pets">Images</string>
+    <string name="pet_details">Pet details</string>
+
+    <string name="name_is">Name: %1$s</string>
+    <string name="gender_is">Gender: %1$s</string>
+    <string name="type_is">Type: %1$s</string>
+    <string name="size_is">Size: %1$s</string>
+    <string name="color_is">Color: %1$s</string>
+    <string name="address_is">Address: %1$s</string>
+
+    <string name="pet_website">Pet\'s website</string>
+    <string name="images">Images</string>
+</resources>

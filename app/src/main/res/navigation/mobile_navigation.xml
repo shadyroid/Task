@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_images">
+
+    <fragment
+        android:id="@+id/nav_images"
+        android:name="com.xontel.task.ui.images.ImagesFragment"
+        android:label="@string/images"
+        tools:layout="@layout/fragment_images" >
+        <action
+            android:id="@+id/action_nav_images_to_nav_pet_details"
+            app:destination="@id/nav_pet_details" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_pet_details"
+        android:name="com.xontel.task.ui.videos.VideosFragment"
+        android:label="@string/pet_details"
+
+        tools:layout="@layout/fragment_videos" >
+        <argument
+            android:name="pet"
+            app:argType="com.xontel.domain.entity.beans.PetBean" />
+    </fragment>
+
+</navigation>
