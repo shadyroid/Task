@@ -1,13 +1,14 @@
 package com.xontel.task.classes.adapters
 
 import android.net.Uri
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.softxpert.petfinder.databinding.ItemVideoBinding
 import com.xontel.domain.entity.beans.VideoBean
+import com.xontel.task.databinding.ItemVideoBinding
 import javax.inject.Inject
 
 class VideosAdapter @Inject constructor() :
@@ -23,7 +24,8 @@ class VideosAdapter @Inject constructor() :
     )
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        Glide.with(holder.itemView.getContext())
+        Log.d("TAG", "onBindViewHolder: "+data[position].address)
+        Glide.with(holder.itemView.context)
             .load(Uri.parse(data[position].address))
             .apply(RequestOptions().override(150, 150))
             .centerCrop()

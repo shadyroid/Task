@@ -1,15 +1,24 @@
 package com.xontel.task.ui.videos
 
+import android.Manifest
+import android.app.AlertDialog
+import android.content.DialogInterface
+import android.content.Intent
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.softxpert.petfinder.databinding.FragmentVideosBinding
+import androidx.navigation.findNavController
 import com.xontel.domain.entity.beans.VideoBean
 import com.xontel.task.classes.adapters.VideosAdapter
+import com.xontel.task.databinding.FragmentVideosBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -22,6 +31,23 @@ class VideosFragment : Fragment() {
 
     @Inject
     lateinit var videosAdapter: VideosAdapter
+    private val requestVideosPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { isGranted: Boolean ->
+        if (isGranted) {
+            requestVideos()
+        } else {
+            binding.root.findNavController().popBackStack()
+        }
+    }
+
+    private fun getVideosPermission(): String {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            Manifest.permission.READ_MEDIA_VIDEO
+        } else {
+            Manifest.permission.READ_EXTERNAL_STORAGE
+        }
+    }
 
 
     override fun onCreateView(
@@ -37,9 +63,13 @@ class VideosFragment : Fragment() {
     }
 
     private fun init() {
+        binding.fabImages.setOnClickListener {
+            binding.root.findNavController()
+                .navigate(VideosFragmentDirections.actionNavVideosBackToNavImages())
+        }
         initVideosAdapter()
         initObserves()
-        requestVideos()
+        requestVideosPermissionLauncher.launch(getVideosPermission())
     }
 
 
@@ -48,7 +78,6 @@ class VideosFragment : Fragment() {
     }
 
     private fun initObserves() {
-
         lifecycleScope.launch {
             viewModel.videosResponseMutableStateFlow.collect {
                 if (it != null) onVideosResponse(it)

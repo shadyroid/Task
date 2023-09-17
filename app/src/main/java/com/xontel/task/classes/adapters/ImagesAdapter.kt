@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.softxpert.petfinder.databinding.ItemImageBinding
 import com.xontel.domain.entity.beans.ImageBean
+import com.xontel.task.databinding.ItemImageBinding
 import dagger.hilt.android.qualifiers.ActivityContext
 import javax.inject.Inject
 
@@ -25,12 +25,11 @@ class ImagesAdapter @Inject constructor() :
     )
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        Glide.with(holder.itemView.getContext())
+        Glide.with(holder.itemView.context)
             .load(Uri.parse(data[position].address))
             .apply(RequestOptions().override(150, 150))
             .centerCrop()
             .into(holder.binding.ivImage)
-
     }
 
 

@@ -19,5 +19,9 @@
         android:id="@+id/nav_videos"
         android:name="com.xontel.task.ui.videos.VideosFragment"
         android:label="@string/videos"
-        tools:layout="@layout/fragment_videos" />
+        tools:layout="@layout/fragment_videos" >
+        <action
+            android:id="@+id/action_nav_videos_back_to_nav_images"
+            app:popUpTo="@id/nav_images" />
+    </fragment>
 </navigation>
