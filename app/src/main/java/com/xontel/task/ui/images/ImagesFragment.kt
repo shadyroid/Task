@@ -48,7 +48,6 @@ class ImagesFragment : Fragment() {
     }
 
     private fun initObserves() {
-
         lifecycleScope.launch {
             viewModel.imagesResponseMutableStateFlow.collect {
                 if (it != null) onImagesResponse(it)

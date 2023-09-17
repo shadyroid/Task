@@ -15,7 +15,6 @@ import javax.inject.Inject
 class ImagesAdapter @Inject constructor() :
     RecyclerView.Adapter<ImagesAdapter.ViewHolder>() {
     private val data: MutableList<ImageBean> = ArrayList()
-    private var isFinishedLoading = false
 
     override fun onCreateViewHolder(parent: ViewGroup, viewImage: Int): ViewHolder = ViewHolder(
         ItemImageBinding.inflate(

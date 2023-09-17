@@ -40,7 +40,32 @@ class GalleryRepoImpl : GalleryRepo {
     }
 
     override suspend fun requestVideos(activity: Activity): List<VideoBean> {
+        val data: MutableList<VideoBean> = mutableListOf()
+        val allVideosUri = MediaStore.Video.Media.EXTERNAL_CONTENT_URI
+        val projection = arrayOf(MediaStore.Video.VideoColumns.DATA, MediaStore.Video.Media._ID)
 
+        try {
+            val cursor: Cursor? = activity.contentResolver.query(
+                allVideosUri,
+                projection,
+                null,
+                null,
+                MediaStore.Video.Media.DATE_ADDED
+            )
+            if (cursor != null && cursor.moveToFirst()) {
+                do {
+                    @SuppressLint("Range") val dataPath = ContentUris.withAppendedId(
+                        MediaStore.Video.Media.EXTERNAL_CONTENT_URI,
+                        cursor.getLong(cursor.getColumnIndex(MediaStore.Video.Media._ID))
+                    ).toString()
+                    data.add(0, VideoBean(dataPath))
+                } while (cursor.moveToNext())
+
+                cursor.close()
+            }
+        } catch (ignored: Exception) {
+        }
+        return data
     }
 
 }

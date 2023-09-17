@@ -13,7 +13,6 @@ import javax.inject.Inject
 class VideosAdapter @Inject constructor() :
     RecyclerView.Adapter<VideosAdapter.ViewHolder>() {
     private val data: MutableList<VideoBean> = ArrayList()
-    private var isFinishedLoading = false
 
     override fun onCreateViewHolder(parent: ViewGroup, viewVideo: Int): ViewHolder = ViewHolder(
         ItemVideoBinding.inflate(
