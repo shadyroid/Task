@@ -1,6 +1,5 @@
 package com.xontel.task.classes.adapters
 
-import android.content.Context
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,8 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.xontel.domain.entity.beans.ImageBean
+import com.xontel.task.R
 import com.xontel.task.databinding.ItemImageBinding
-import dagger.hilt.android.qualifiers.ActivityContext
 import javax.inject.Inject
 
 class ImagesAdapter @Inject constructor() :
@@ -28,6 +27,8 @@ class ImagesAdapter @Inject constructor() :
         Glide.with(holder.itemView.context)
             .load(Uri.parse(data[position].address))
             .apply(RequestOptions().override(150, 150))
+            .placeholder(R.mipmap.ic_launcher)
+            .error(R.mipmap.ic_launcher)
             .centerCrop()
             .into(holder.binding.ivImage)
     }

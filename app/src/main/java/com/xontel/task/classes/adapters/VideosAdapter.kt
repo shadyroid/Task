@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.xontel.domain.entity.beans.VideoBean
+import com.xontel.task.R
 import com.xontel.task.databinding.ItemVideoBinding
 import javax.inject.Inject
 
@@ -24,10 +25,12 @@ class VideosAdapter @Inject constructor() :
     )
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        Log.d("TAG", "onBindViewHolder: "+data[position].address)
+        Log.d("TAG", "onBindViewHolder: " + data[position].address)
         Glide.with(holder.itemView.context)
             .load(Uri.parse(data[position].address))
             .apply(RequestOptions().override(150, 150))
+            .placeholder(R.mipmap.ic_launcher)
+            .error(R.mipmap.ic_launcher)
             .centerCrop()
             .into(holder.binding.ivVideo)
 

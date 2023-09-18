@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_images"
         android:layout_width="match_parent"
@@ -14,7 +15,38 @@
         app:spanCount="4"
         tools:listitem="@layout/item_image" />
 
+    <Button
+        android:id="@+id/btn_request_permission"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/request_permission"
+        android:visibility="gone"
+        tools:visibility="visible" />
 
+    <LinearLayout
+        android:id="@+id/ll_no_images_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone"
+        tools:visibility="visible">
 
+        <ImageView
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:src="@drawable/ic_images"
+            app:tint="?attr/colorPrimary" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/no_images"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 </FrameLayout>
 
