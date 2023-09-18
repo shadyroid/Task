@@ -13,20 +13,5 @@
         app:spanCount="4"
         tools:listitem="@layout/item_video" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_images"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_gravity="bottom"
-        android:layout_margin="32dp"
-        android:elevation="0dp"
-        android:gravity="bottom"
-        android:src="@drawable/ic_images"
-        android:tint="#FFFFFF"
-        app:backgroundTint="#FF6969"
-        app:elevation="4dp"
-        app:fabCustomSize="60dp"
-        app:maxImageSize="40dp" />
-
 </FrameLayout>
 

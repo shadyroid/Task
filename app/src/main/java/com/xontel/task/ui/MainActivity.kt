@@ -2,10 +2,10 @@ package com.xontel.task.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.NavController
-import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
-import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import com.xontel.task.R
 import com.xontel.task.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -22,10 +22,16 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.toolbar)
 
+
         val navController = findNavController(R.id.nav_host_fragment_content_main)
 
-        NavigationUI.setupActionBarWithNavController(this, navController)
-
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.nav_images, R.id.nav_videos
+            )
+        )
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        binding.navView.setupWithNavController(navController)
     }
 
 

@@ -19,7 +19,6 @@ import androidx.navigation.findNavController
 import com.xontel.domain.entity.beans.ImageBean
 import com.xontel.task.classes.adapters.ImagesAdapter
 import com.xontel.task.databinding.FragmentImagesBinding
-import com.xontel.task.ui.videos.VideosFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -64,11 +63,6 @@ class ImagesFragment : Fragment() {
     }
 
     private fun init() {
-        binding.fabVideos.setOnClickListener {
-            binding.root.findNavController().navigate(
-                ImagesFragmentDirections.actionNavImagesToNavPetDetails()
-            )
-        }
         initImagesAdapter()
         initObserves()
         requestImagesPermissionLauncher.launch(getImagesPermission())

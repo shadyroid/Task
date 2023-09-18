@@ -63,10 +63,6 @@ class VideosFragment : Fragment() {
     }
 
     private fun init() {
-        binding.fabImages.setOnClickListener {
-            binding.root.findNavController()
-                .navigate(VideosFragmentDirections.actionNavVideosBackToNavImages())
-        }
         initVideosAdapter()
         initObserves()
         requestVideosPermissionLauncher.launch(getVideosPermission())

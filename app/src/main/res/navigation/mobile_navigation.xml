@@ -9,19 +9,11 @@
         android:id="@+id/nav_images"
         android:name="com.xontel.task.ui.images.ImagesFragment"
         android:label="@string/images"
-        tools:layout="@layout/fragment_images">
-        <action
-            android:id="@+id/action_nav_images_to_nav_pet_details"
-            app:destination="@id/nav_videos" />
-    </fragment>
-
+        tools:layout="@layout/fragment_images" />
     <fragment
         android:id="@+id/nav_videos"
         android:name="com.xontel.task.ui.videos.VideosFragment"
         android:label="@string/videos"
-        tools:layout="@layout/fragment_videos" >
-        <action
-            android:id="@+id/action_nav_videos_back_to_nav_images"
-            app:popUpTo="@id/nav_images" />
-    </fragment>
+        tools:layout="@layout/fragment_videos" />
+
 </navigation>

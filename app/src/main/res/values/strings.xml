@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Pet Finder</string>
-    <string name="pet_details">Pet details</string>
 
     <string name="images">Images</string>
     <string name="videos">Videos</string>
